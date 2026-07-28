@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Guernsey Harpsichord Trust</title>
+<meta name="description" content="How to support the Guernsey Harpsichord Trust, which cares for the island's Andrew Garlick harpsichord.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <a class="brand" href="index.html">
+      <span class="brand-text">Guernsey Harpsichord Trust<small>Est. 1977</small></span>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="index.html#history">History</a>
+      <a href="index.html#harpsichord">The Harpsichord</a>
+      <a href="events.html">Events</a>
+      <a href="support.html" class="current">Support</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">MENU</button>
+  </div>
+</header>
+
+<div class="keyboard-strip" aria-hidden="true">
+  <svg viewBox="0 0 700 34" preserveAspectRatio="none">
+    <defs>
+      <pattern id="keys" width="35" height="34" patternUnits="userSpaceOnUse">
+        <rect x="0" y="0" width="35" height="34" fill="#14213d"/>
+        <rect x="1" y="0" width="33" height="34" fill="#f4f1e6"/>
+        <rect x="1" y="0" width="33" height="22" fill="#14213d"/>
+      </pattern>
+    </defs>
+    <rect width="700" height="34" fill="url(#keys)"/>
+  </svg>
+</div>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Support the Trust</p>
+      <h2>Keeping one instrument in playing condition.</h2>
+    </div>
+    <div class="support-note">
+      <p>The Trust's work centres on a single instrument: insuring it, maintaining it, and bringing it out for concerts rather than leaving it in storage. Fundraising recitals, such as this year's performance by Fran&ccedil;ois Cloete, go directly toward the cost of caring for the harpsichord and encouraging young musicians to take it up.</p>
+      <p>The most direct way to support the Trust right now is by attending — and donating at — this year's fundraising recital. See the <a href="events.html">Events page</a> for details.</p>
+    </div>
+  </div>
+</section>
+
+<div class="keyboard-strip" aria-hidden="true">
+  <svg viewBox="0 0 700 34" preserveAspectRatio="none"><rect width="700" height="34" fill="url(#keys)"/></svg>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p>Guernsey Harpsichord Trust — established 1977 to care for the island's Andrew Garlick harpsichord.</p>
+    <div class="foot-bottom">
+      <span>Guernsey Harpsichord Trust</span>
+      <span>&copy; 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
