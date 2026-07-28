@@ -409,3 +409,12 @@ nav.links.open{
   border-bottom: 1px solid var(--parchment-2);
   gap: 16px;
 }
+
+/* Poster sizing for recital images */
+.recital-poster {
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
